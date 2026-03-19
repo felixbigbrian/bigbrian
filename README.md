@@ -1,9 +1,8 @@
-<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Your Name — Art Portfolio</title>
+  <title>Big Brian — Art Portfolio</title>
 
   <!-- Simple, readable fonts from Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
