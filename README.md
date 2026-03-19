@@ -188,7 +188,7 @@
       <div class="brand">
         <div class="logo" aria-hidden="true">YN</div>
         <div>
-          <h1>Your Name</h1>
+          <h1>BIGDDDDDD</h1>
           <p>Artist — Visuals & Illustration</p>
         </div>
       </div>
@@ -211,8 +211,8 @@
       <aside class="meta" aria-labelledby="about">
         <div class="info">
           <b id="about">Details</b>
-          <div>Location: City, Country</div>
-          <div>Mediums: Acrylic, Digital, Mixed Media</div>
+          <div>Location: Hong Kong, China</div>
+          <div>Style: Doodle Art, Street Fashion, Mixed Media</div>
           <div>Availability: Commissions open</div>
         </div>
         <div style="margin-top:auto">
