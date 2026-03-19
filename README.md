@@ -1,219 +1,381 @@
-# bigbrian
-Testing 
-<form id="search-form" class="search">
-  <input type="text" id="city-input" placeholder="Enter city (e.g., London)" required>
-  <button type="submit">Search</button>
-</form>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sample Website — Demo</title>
+  <meta name="description" content="A small sample website for testing and demos." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">SampleSite</a>
 
-<section id="current" class="card hidden">
-  <h2 id="current-city"></h2>
-  <div class="current-row">
-    <div class="current-main">
-      <img id="current-icon" alt="" />
-      <div>
-        <div id="current-temp" class="temp"></div>
-        <div id="current-desc" class="desc"></div>
-      </div>
+      <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">
+        ☰
+      </button>
+
+      <nav id="mainNav" class="main-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+
+      <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
     </div>
-    <ul class="current-details">
-      <li>Feels like: <span id="current-feels"></span></li>
-      <li>Humidity: <span id="current-humidity"></span></li>
-      <li>Wind: <span id="current-wind"></span></li>
-    </ul>
-  </div>
-</section>
+  </header>
 
-<section id="forecast" class="hidden">
-  <h3>3-Day Forecast</h3>
-  <div id="forecast-cards" class="forecast-grid"></div>
-</section>
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Welcome to the Sample Website</h1>
+          <p>A simple responsive site you can use to test GitHub Pages or try out web templates.</p>
+          <p>
+            <a class="btn" href="#contact">Get in touch</a>
+            <a class="btn ghost" href="#features">See features</a>
+          </p>
+        </div>
+        <div class="hero-image">
+          <!-- Replace the image URL with one in your repo if you add assets/hero.jpg -->
+          <img src="https://images.unsplash.com/photo-1506765515384-028b60a970df?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Hero illustration" />
+        </div>
+      </div>
+    </section>
 
-<div id="error" class="error hidden"></div>
+    <section id="features" class="container features">
+      <h2>Features</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Responsive Layout</h3>
+          <p>Looks good on phones, tablets, and desktops with a clean, flexible layout.</p>
+        </article>
 
-<footer>
-  <small>Data from OpenWeatherMap | Demo site</small>
-</footer>
-</main>
+        <article class="card">
+          <h3>Theme Switcher</h3>
+          <p>Light and dark mode toggles preserved in localStorage for convenience.</p>
+        </article>
 
-<script src="script.js"></script>
+        <article class="card">
+          <h3>Accessible Nav</h3>
+          <p>Keyboard-friendly navigation and ARIA attributes for better accessibility.</p>
+        </article>
+      </div>
+    </section>
 
+    <section id="about" class="container about">
+      <h2>About this Demo</h2>
+      <p>This repository is intended as a minimal, well-commented starting point for static websites. Feel free to modify files, add images under an assets/ folder, and enable GitHub Pages to publish.</p>
+    </section>
+
+    <section id="contact" class="container contact">
+      <h2>Contact Us</h2>
+      <form id="contactForm" class="form" novalidate>
+        <div class="form-row">
+          <label for="name">Name</label>
+          <input id="name" name="name" required minlength="2" />
+          <span class="error" aria-live="polite"></span>
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+          <span class="error" aria-live="polite"></span>
+        </div>
+
+        <div class="form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required minlength="10"></textarea>
+          <span class="error" aria-live="polite"></span>
+        </div>
+
+        <div class="form-row">
+          <button type="submit" class="btn">Send Message</button>
+          <button type="reset" class="btn ghost">Reset</button>
+        </div>
+
+        <div id="formFeedback" class="form-feedback" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> SampleSite — Built for testing and demos</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
 </body>
-
 </html>
-
 :root{
---bg:#f4f7fb;
---card:#ffffff;
---accent:#1e88e5;
---muted:#6b7280;
---max-width:800px;
+  --bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --accent: #2563eb;
+  --card: #f8fafc;
+  --radius: 10px;
+  --max-width: 1100px;
+}
+
+[data-theme="dark"]{
+  --bg: #0b1220;
+  --text: #e6eef8;
+  --muted: #9aa6b2;
+  --accent: #60a5fa;
+  --card: #071021;
 }
 
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-margin:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-background:linear-gradient(180deg,var(--bg),#eef3fb);
-color:#111827;
-display:flex;
-align-items:flex-start;
-justify-content:center;
-padding:32px 16px;
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
 }
 
 .container{
-width:100%;
-max-width:var(--max-width);
-background:transparent;
+  width:90%;
+  max-width:var(--max-width);
+  margin:0 auto;
 }
 
-h1{margin:0 0 12px;font-size:1.6rem}
-h2{margin:0 0 8px}
+/* Header */
+.site-header{
+  border-bottom:1px solid rgba(0,0,0,0.06);
+  background:linear-gradient(180deg, rgba(255,255,255,0.6), transparent);
+  position:sticky;
+  top:0;
+  z-index:40;
+  backdrop-filter: blur(6px);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:1rem 0;
+}
+.brand{
+  font-weight:700;
+  color:var(--text);
+  text-decoration:none;
+  font-size:1.1rem;
+}
+.nav-toggle{
+  display:none;
+  background:none;
+  border:0;
+  font-size:1.4rem;
+  cursor:pointer;
+}
+.main-nav ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  gap:0.75rem;
+}
+.main-nav a{
+  color:var(--muted);
+  text-decoration:none;
+  padding:0.5rem .6rem;
+  border-radius:8px;
+}
+.main-nav a:hover{ color:var(--text); background:rgba(0,0,0,0.03) }
+
+.theme-toggle{
+  margin-left:auto;
+  background:none;
+  border:0;
+  font-size:1.1rem;
+  cursor:pointer;
+}
+
+/* Hero */
+.hero{
+  padding:3rem 0;
+}
+.hero-inner{
+  display:flex;
+  gap:2rem;
+  align-items:center;
+}
+.hero-text{flex:1}
+.hero-text h1{margin:0 0 .5rem; font-size:clamp(1.6rem, 3vw, 2.4rem)}
+.hero-text p{color:var(--muted)}
+.hero-image{flex:1; text-align:right}
+.hero-image img{max-width:100%; border-radius:12px; box-shadow: 0 6px 18px rgba(2,6,23,0.08)}
+
+/* Buttons */
+.btn{
+  display:inline-block;
+  padding:.6rem .9rem;
+  background:var(--accent);
+  color:white;
+  border-radius:8px;
+  text-decoration:none;
+  border:0;
+  cursor:pointer;
+}
+.btn.ghost{
+  background:transparent;
+  color:var(--accent);
+  border:1px solid rgba(37,99,235,0.12);
+}
+
+/* Features */
+.features{padding:2rem 0}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+}
 .card{
-background:var(--card);
-border-radius:12px;
-padding:16px;
-box-shadow:0 6px 18px rgba(16,24,40,0.06);
-margin:12px 0;
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:1rem;
+  box-shadow: 0 4px 12px rgba(2,6,23,0.04);
 }
 
-.search{display:flex;gap:8px;margin-bottom:8px}
-.search input{
-flex:1;padding:10px 12px;border-radius:8px;border:1px solid #e6eef7;background:white;
+/* About & Contact */
+.about{padding:1.5rem 0}
+.contact{padding:2rem 0}
+.form-row{margin-bottom:0.75rem}
+input,textarea{
+  width:100%;
+  padding:.6rem .75rem;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,0.08);
+  background:transparent;
+  color:var(--text);
 }
-.search button{
-padding:10px 12px;border-radius:8px;border:0;background:var(--accent);color:white;font-weight:600;
-cursor:pointer;
-}
-.search button:active{transform:translateY(1px)}
+.error{color:#ef4444; font-size:.85rem; display:block; margin-top:.25rem; min-height:1em}
+.form-feedback{margin-top:.6rem; color:var(--muted)}
 
-.current-row{display:flex;flex-direction:column;gap:12px}
-.current-main{display:flex;align-items:center;gap:12px}
-.current-main img{width:80px;height:80px}
-.temp{font-size:1.6rem;font-weight:700}
-.desc{color:var(--muted);text-transform:capitalize}
-.current-details{list-style:none;padding:0;margin:0;color:var(--muted)}
-.current-details li{margin:6px 0}
-
-.forecast-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:8px}
-.forecast-card{
-background:linear-gradient(180deg,#fff,#fbfdff);
-border-radius:10px;padding:10px;text-align:center;border:1px solid #eef6ff;
-}
-.forecast-card img{width:48px;height:48px}
-.forecast-card .day{font-weight:600;margin-top:6px}
-.forecast-card .range{color:var(--muted);margin-top:4px}
-
-.error{
-margin-top:12px;padding:10px;border-radius:8px;background:#fff0f0;color:#7f1d1d;border:1px solid #ffd1d1;
+/* Footer */
+.site-footer{
+  border-top:1px solid rgba(0,0,0,0.06);
+  padding:1rem 0;
+  margin-top:2rem;
+  color:var(--muted);
 }
 
-.hidden{display:none}
-
-footer{margin-top:18px;color:var(--muted);font-size:0.9rem}
-
-@media (min-width:640px){
-.current-row{flex-direction:row;justify-content:space-between;align-items:center}
+/* Responsive */
+@media (max-width:900px){
+  .hero-inner{flex-direction:column-reverse; text-align:center}
+  .hero-image{text-align:center}
+  .grid{grid-template-columns:repeat(2,1fr)}
 }
-const API_KEY = "YOUR_API_KEY_HERE"; // <-- put your key here
 
-const $ = sel => document.querySelector(sel);
-const form = $('#search-form');
-const cityInput = $('#city-input');
-const errorEl = $('#error');
-const currentSection = $('#current');
-const forecastSection = $('#forecast');
-const currentCity = $('#current-city');
-const currentIcon = $('#current-icon');
-const currentTemp = $('#current-temp');
-const currentDesc = $('#current-desc');
-const currentFeels = $('#current-feels');
-const currentHumidity = $('#current-humidity');
-const currentWind = $('#current-wind');
-const forecastCards = $('#forecast-cards');
+@media (max-width:700px){
+  .nav-toggle{display:inline-block}
+  .main-nav{position:absolute; right:0; top:64px; background:var(--bg); border-radius:10px; box-shadow:0 8px 28px rgba(2,6,23,0.12); transform-origin:top right; display:none; padding:0.5rem}
+  .main-nav ul{flex-direction:column}
+  .main-nav.show{display:block}
+  .grid{grid-template-columns:1fr}
+}
+// Lightweight JS for interactivity: menu toggle, form validation, theme
+document.addEventListener('DOMContentLoaded', function () {
+  // DOM refs
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  const themeToggle = document.getElementById('themeToggle');
+  const yearEl = document.getElementById('year');
+  const contactForm = document.getElementById('contactForm');
+  const formFeedback = document.getElementById('formFeedback');
 
-form.addEventListener('submit', e => {
-e.preventDefault();
-const city = cityInput.value.trim();
-if (!city) return;
-fetchWeatherByCity(city);
+  // set year
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // nav toggle for small screens
+  if (navToggle && mainNav) {
+    navToggle.addEventListener('click', function () {
+      mainNav.classList.toggle('show');
+      const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', (!expanded).toString());
+    });
+  }
+
+  // theme toggle (localStorage)
+  const userPref = localStorage.getItem('site-theme');
+  if (userPref) {
+    document.documentElement.setAttribute('data-theme', userPref);
+    themeToggle.textContent = userPref === 'dark' ? '☀️' : '🌙';
+  }
+
+  themeToggle.addEventListener('click', function () {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    if (next === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeToggle.textContent = '☀️';
+      localStorage.setItem('site-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      themeToggle.textContent = '🌙';
+      localStorage.setItem('site-theme', 'light');
+    }
+  });
+
+  // Simple form validation & simulated submit
+  function showError(input, message) {
+    const row = input.closest('.form-row');
+    if (!row) return;
+    const err = row.querySelector('.error');
+    err.textContent = message || '';
+    input.setAttribute('aria-invalid', !!message);
+  }
+
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    formFeedback.textContent = '';
+
+    const name = contactForm.name;
+    const email = contactForm.email;
+    const message = contactForm.message;
+
+    let ok = true;
+    // Name
+    if (!name.value || name.value.trim().length < 2) {
+      showError(name, 'Please enter your name (2+ characters).');
+      ok = false;
+    } else showError(name, '');
+
+    // Email
+    if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      showError(email, 'Please enter a valid email address.');
+      ok = false;
+    } else showError(email, '');
+
+    // Message
+    if (!message.value || message.value.trim().length < 10) {
+      showError(message, 'Please enter a message (10+ characters).');
+      ok = false;
+    } else showError(message, '');
+
+    if (!ok) {
+      formFeedback.textContent = 'Please fix the errors above and try again.';
+      return;
+    }
+
+    // Simulate sending
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    setTimeout(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+      formFeedback.textContent = 'Thanks — your message was received (simulated).';
+      contactForm.reset();
+    }, 1100);
+  });
 });
-
-async function fetchWeatherByCity(city){
-clearUI();
-try{
-// Use OpenWeatherMap Geocoding API to get lat/lon from city name
-const geoRes = await fetch(https://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=1&appid=${API_KEY});
-if (!geoRes.ok) throw new Error('Geocoding failed');
-const geo = await geoRes.json();
-if (!geo || geo.length === 0) {
-showError('City not found. Try a different name.');
-return;
-}
-const { lat, lon, name, country, state } = geo[0];
-
-// Use One Call (v3) / or One Call (v2) for current + daily forecast
-// We'll use the One Call v1 "onecall" endpoint (works with API key)
-// Note: OpenWeather changed its API versions; this example uses the onecall endpoint for simplicity.
-const weatherRes = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely,hourly,alerts&appid=${API_KEY}`);
-if (!weatherRes.ok) throw new Error('Weather fetch failed');
-const data = await weatherRes.json();
-
-renderCurrent({ name, country, state, current: data.current });
-renderForecast(data.daily);
-} catch (err) {
-console.error(err);
-showError('Unable to fetch weather. Check your network and API key.');
-}
-}
-
-function renderCurrent({ name, country, state, current }){
-const displayName = state ? ${name}, ${state}, ${country} : ${name}, ${country};
-currentCity.textContent = displayName;
-const icon = current.weather && current.weather[0] ? current.weather[0].icon : '01d';
-currentIcon.src = https://openweathermap.org/img/wn/${icon}@2x.png;
-currentIcon.alt = current.weather && current.weather[0] ? current.weather[0].description : 'weather';
-currentTemp.textContent = ${Math.round(current.temp)}°C;
-currentDesc.textContent = current.weather && current.weather[0] ? current.weather[0].description : '';
-currentFeels.textContent = ${Math.round(current.feels_like)}°C;
-currentHumidity.textContent = ${current.humidity}%;
-currentWind.textContent = ${(current.wind_speed || 0)} m/s;
-currentSection.classList.remove('hidden');
-}
-
-function renderForecast(daily){
-// daily[0] is today; show days 1..3 (next 3 days)
-forecastCards.innerHTML = '';
-for (let i = 1; i <= 3 && i < daily.length; i++){
-const day = daily[i];
-const date = new Date(day.dt * 1000);
-const dayName = date.toLocaleDateString(undefined, { weekday: 'short' });
-const icon = day.weather && day.weather[0] ? day.weather[0].icon : '01d';
-const desc = day.weather && day.weather[0] ? day.weather[0].description : '';
-const max = Math.round(day.temp.max);
-const min = Math.round(day.temp.min);
-const card = document.createElement('div');
-card.className = 'forecast-card card';
-card.innerHTML = `
-  <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="${desc}">
-  <div class="day">${dayName}</div>
-  <div class="range">${max}° / ${min}°</div>
-  <div class="desc" style="margin-top:6px;color:var(--muted);text-transform:capitalize">${desc}</div>
-`;
-forecastCards.appendChild(card);
-}
-forecastSection.classList.remove('hidden');
-}
-
-function showError(msg){
-errorEl.textContent = msg;
-errorEl.classList.remove('hidden');
-}
-
-function clearUI(){
-errorEl.classList.add('hidden');
-currentSection.classList.add('hidden');
-forecastSection.classList.add('hidden');
-forecastCards.innerHTML = '';
-}
